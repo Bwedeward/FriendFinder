@@ -1,0 +1,5 @@
+var friendsArray = [
+    {
+        friendName: "hello"
+    }
+]

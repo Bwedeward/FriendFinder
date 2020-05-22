@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/Bwedeward/FriendFinder/issues"
   },
-  "homepage": "https://github.com/Bwedeward/FriendFinder#readme"
+  "homepage": "https://github.com/Bwedeward/FriendFinder#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
 }
