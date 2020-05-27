@@ -1,47 +1,37 @@
-var tableData = require("./api/friends");
+var friends = require("../data/friends.js");
 
 module.exports = function(app) {
   
-    app.get("/api/tables", function(req, res) {
-      res.json(tableData);
+    app.get("/api/friends", function(req, res) {
+      res.json(friends);
     });
-  
-    app.get("/api/waitlist", function(req, res) {
-      res.json(waitListData);
-    });
-  
-    // API POST Requests
-    // Below code handles when a user submits a form and thus submits data to the server.
-    // In each of the below cases, when a user submits form data (a JSON object)
-    // ...the JSON is pushed to the appropriate JavaScript array
-    // (ex. User fills out a reservation request... this data is then sent to the server...
-    // Then the server saves the data to the tableData array)
-    // ---------------------------------------------------------------------------
-  
-    app.post("/api/tables", function(req, res) {
-      // Note the code here. Our "server" will respond to requests and let users know if they have a table or not.
-      // It will do this by sending out the value "true" have a table
-      // req.body is available since we're using the body parsing middleware
-      if (tableData.length < 5) {
-        tableData.push(req.body);
-        res.json(true);
-      }
-      else {
-        waitListData.push(req.body);
-        res.json(false);
-      }
-    });
-  
-    // ---------------------------------------------------------------------------
-    // I added this below code so you could clear out the table while working with the functionality.
-    // Don"t worry about it!
-  
-    app.post("/api/clear", function(req, res) {
-      // Empty out the arrays of data
-      tableData.length = 0;
-      waitListData.length = 0;
-  
-      res.json({ ok: true });
+
+    app.post("/api/friends", function(req, res) {
+      var newFriend = req.body
+      var difference = 0
+      var friendMatch = null
+      newFriend.scores.forEach((element, i) => {
+        newFriend.scores[i] = parseInt(element)
+      })
+      friends.forEach(element => {
+        element.scores.forEach((score, i) => {
+          difference += Math.abs(parseInt(newFriend.scores[i]) - score)
+          if (i === (element.scores.length-1)) {
+            if (!friendMatch) {
+              friendMatch = element 
+              friendMatch.difference = difference
+            } else if (friendMatch.difference > difference) {
+              friendMatch = element
+              friendMatch.difference = difference
+            } 
+            difference = 0
+          }
+        })
+      });
+      console.log("YOUR NEW FRIEND!!!!!!", JSON.stringify(friendMatch))
+      friends.push(newFriend)
+      console.log(friends)
+      res.json(friendMatch)
     });
   };
   
