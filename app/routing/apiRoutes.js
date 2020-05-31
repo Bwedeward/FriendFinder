@@ -13,6 +13,7 @@ module.exports = function(app) {
       newFriend.scores.forEach((element, i) => {
         newFriend.scores[i] = parseInt(element)
       })
+      console.log(newFriend.scores)
       friends.forEach(element => {
         element.scores.forEach((score, i) => {
           difference += Math.abs(parseInt(newFriend.scores[i]) - score)
@@ -28,7 +29,7 @@ module.exports = function(app) {
           }
         })
       });
-      console.log("YOUR NEW FRIEND!!!!!!", JSON.stringify(friendMatch))
+      console.log("YOUR NEW FRIEND!!", JSON.stringify(friendMatch))
       friends.push(newFriend)
       console.log(friends)
       res.json(friendMatch)
