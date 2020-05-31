@@ -12,7 +12,7 @@ Friend Finder is an app that takes in information in the form of a questionaire 
 
 ## Demo
 	
-*Friend Finder* is deployed to Heroku. Please check it out [here](https://fierce-fortress-60021.herokuapp.com/).
+*Friend Finder* is deployed to Heroku. Please check it out [here](https://boiling-everglades-01258.herokuapp.com/).
 
 ## Installation
 
