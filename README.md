@@ -1,9 +1,5 @@
 <div align ="center"><h1>Friend Finder</h1></div>
 
-Friend Finder is an app that takes in information in the form of a questionaire and compares it to other people who have answered the questionaire. It compares question by question to determine your new friend who has answered the questions most similar.
-
-# Friend Finder Application
-
 ## Description
 
 *Friend Finder* is an app that takes in information in the form of a questionaire and compares it to other people who have answered the questionaire. It compares question by question to determine your new friend who has answered the questions most similar.
